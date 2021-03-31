@@ -1,0 +1,51 @@
+{
+  "name": "workertemplate",
+  "version": "1.0.0",
+  "description": "Base code for worker implementation",
+  "main": "main.js",
+  "bin": "dist/WorkerTemplate.js",
+  "scripts": {
+    "start": "cross-env DEBUG=main nodemon src/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -rf dist && webpack --mode development && cp ./src/config.json ./dist",
+    "startProd": "node ./dist/InputFileEndopoint",
+    "push": "npm --registry https://sginer2.bytesafe.dev/r/integration publish '.'",
+    "buildExec": "rm -rf dist && webpack --mode development && cp ./src/config.json ./dist && pkg --target linux ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sginer/WorkerTemplate.git"
+  },
+  "dependencies": {
+    "axios": "^0.20.0",
+    "convict": "^6.0.0",
+    "convict-format-with-validator": "^6.0.0",
+    "cors": "^2.8.5",
+    "debug": "^4.1.1",
+    "express": "^4.17.1",
+    "hl7parser": "^1.0.1",
+    "path": "^0.12.7",
+    "rhea": "^1.0.23",
+    "uuid": "^8.3.0"
+  },
+  "devDependencies": {
+    "pkg": "^4.4.9",
+    "cross-env": "^7.0.2",
+    "nodemon": "^2.0.4",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-node-externals": "^2.5.2"
+  },
+  "keywords": [
+    "worker",
+    "template",
+    "eai",
+    "integration"
+  ],
+  "author": "sginer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sginer/WorkerTemplate/issues"
+  },
+  "homepage": "https://github.com/sginer/WorkerTemplate#readme"
+}
