@@ -4,6 +4,7 @@ const sender = require('./sender/sender')
 const adminListener = require('./admin/adminListener')
 const config = require('./config')
 
+
 async function main() {
 
     //read parameters on file and init service
