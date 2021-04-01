@@ -1,3 +1,9 @@
+################################################################################
+# This file will be replaced by the generated worker.
+#
+# The generated worker have to implement manageEvent function and import sender
+################################################################################
+
 const sender = require('./sender/sender')
 const debug = require('debug')('manageEvent')
 
