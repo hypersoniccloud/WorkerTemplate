@@ -10,7 +10,7 @@
     "build": "rm -rf dist && webpack --mode development && cp ./src/config.json ./dist",
     "startProd": "node ./dist/InputFileEndopoint",
     "push": "npm --registry https://sginer2.bytesafe.dev/r/integration publish '.'",
-    "buildExec": "rm -rf dist && webpack --mode development && cp ./src/config.json ./dist && pkg --target linux ."
+    "buildExec": "rm -rf dist && webpack --mode production && cp ./src/config.json ./dist && pkg --target linux ."
   },
   "repository": {
     "type": "git",
