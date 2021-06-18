@@ -2,7 +2,7 @@
   "name": "workertemplate",
   "version": "1.0.0",
   "description": "Base code for worker implementation",
-  "main": "main.js",
+  "main": "src/main.js",
   "bin": "dist/WorkerTemplate.js",
   "scripts": {
     "start": "cross-env DEBUG=main nodemon src/main.js",
