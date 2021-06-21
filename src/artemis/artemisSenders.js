@@ -11,8 +11,8 @@ let contextHolder = [0,1,2,3,4,5].map(id => null)
 function startSender(senderNumber) {
     if (connectionArray[senderNumber] === undefined || connectionArray[senderNumber] === null){
         const newContainer = container.create_container({"id" : `sender_${senderNumber}`})
-        connectionArray[senderNumber] = newContainer.connect({ 'host':config.get(`artemisAddress${senderNumber}`), 'port':config.get(`artemisPort${senderNumber}`), 'username' : config.get(`artemisUser${senderNumber}`), 'password' : config.get(`artemisPassword${senderNumber}`)});    
-        connectionArray[senderNumber].open_sender({"target" : {'address':config.get(`artemisQueue${senderNumber}`), 'durable' : true} , "autosettle" : true});
+        connectionArray[senderNumber] = newContainer.connect({ 'host':config.get(`workerArtemisTargetAddress${senderNumber}`), 'port':config.get(`workerArtemisTargetPort${senderNumber}`), 'username' : config.get(`workerArtemisTargetUser${senderNumber}`), 'password' : config.get(`workerArtemisTargetPassword${senderNumber}`)});
+        connectionArray[senderNumber].open_sender({"target" : {'address':config.get(`workerArtemisTargetQueue${senderNumber}`), 'durable' : true} , "autosettle" : true});
         connectionArray[senderNumber].once('sendable', function (context) {
             debug(`sendable - ${context.container.id}`)
             console.log(`sendable - ${context.container.id}`)
@@ -22,7 +22,7 @@ function startSender(senderNumber) {
         
         connectionArray[senderNumber].on('disconnected', function (context) {
             debug(`Disconnected - ${context.container.id}`);
-            connection.open_sender({"target" : {'address':config.get(`artemisQueue${senderNumber}`), 'durable' : true} , "autosettle" : true});
+            connection.open_sender({"target" : {'address':config.get(`workerArtemisTargetQueue${senderNumber}`), 'durable' : true} , "autosettle" : true});
         });
             }
 }
@@ -39,7 +39,7 @@ function sendEvent(senderNumber, event) {
 
 }
 
-artemisSenders = {
+const artemisSenders = {
     "startSender" : startSender,
     "sendEvent" : sendEvent
 }

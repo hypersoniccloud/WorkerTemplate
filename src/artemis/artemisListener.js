@@ -10,8 +10,8 @@ let connection = null
 function startListener() {
     if (connection === null ){
         const newContainer = container.create_container({"id" : `listener`})
-        connection = newContainer.connect({'host':config.get("artemisInputAddress"), 'port':config.get("artemisInputPort"), 'username' : config.get("artemisInputUser"), 'password' : config.get("artemisInputPassword")});    
-        connection.open_receiver(config.get("artemisInputQueue"));
+        connection = newContainer.connect({'host':config.get("workerArtemisInputAddress"), 'port':config.get("workerArtemisInputPort"), 'username' : config.get("workerArtemisInputUser"), 'password' : config.get("workerArtemisInputPassword")});    
+        connection.open_receiver(config.get("workerArtemisInputQueue"));
         connection.on('message', function (context) {
             //TODO : add call to worker implémentation
             debug('Event')
@@ -30,7 +30,7 @@ function stopListener() {
     connection = null
 }
 
-artemisListener = {
+const artemisListener = {
     "startListener" : startListener,
     "stopListener" : stopListener
 }

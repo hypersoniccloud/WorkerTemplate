@@ -3,7 +3,7 @@ const axios = require('axios')
 const debug = require('debug')('restSender')
 
 async function syncSend(senderNumber, event) {
-    let url = `http://${config.get(`restTargetAddress${senderNumber}`)}:${config.get(`restTargetPort${senderNumber}`)}${config.get(`restTargetPath${senderNumber}`)}`;
+    let url = `http://${config.get(`workerRestTargetAddress${senderNumber}`)}:${config.get(`workerRestTargetPort${senderNumber}`)}${config.get(`workerRestTargetPath${senderNumber}`)}`;
     try {
         let result = await axios({
             "method" : "post",

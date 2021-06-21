@@ -6,6 +6,7 @@ convict.addFormat(require('convict-format-with-validator').ipaddress);
 // Define a schema
 var config = convict({
     //admin config
+    /*
     "restAdminAddress": {
         "doc": 'Address of admin rest server.',
         "format": '*',
@@ -27,66 +28,67 @@ var config = convict({
         "env": 'WORKER_REST_ADMIN_PATH',
         "arg": 'workerRestAdminPath'
     },
+    */
 
 
     //receive configuration
-    "receiveType": {
+    "workerReceiveType": {
         "doc": 'Receive type.',
-        "format": ['sync', 'async'],
-        "default" : "sync",
+        "format": ['SYNC', 'ASYNC'],
+        "default" : "SYNC",
         "env": 'WORKER_RECEIVE_TYPE',
         "arg": 'workerReceiveType'
     },
-    "restInputAddress": {
+    "workerRestInputAddress": {
         "doc": 'Address of rest server to receive message.',
         "format": '*',
         "default" : "0.0.0.0",
         "env": 'WORKER_REST_INPUT_ADDRESS',
         "arg": 'workerRestInputAddress'
     },
-    "restInputPort": {
+    "workerRestInputPort": {
         "doc": 'Port of rest server.',
         "format": 'port',
         "default": 80,
         "env": 'WORKER_REST_INPUT_PORT',
         "arg": 'workerRestInputPort'
     },
-    "restInputPath": {
+    "workerRestInputPath": {
         "doc": 'Path of target endpoint to contact.',
         "format": '*',
         "default": "/api/event",
         "env": 'WORKER_REST_PATH',
         "arg": 'workerRestInputPath'
     },
-    "artemisInputAddress": {
+    "workerArtemisInputAddress": {
         "doc": 'Address of artemis server.',
         "format": '*',
         "default" : "0.0.0.0",
         "env": 'WORKER_ARTEMIS_INPUT_ADRESS',
         "arg": 'workerArtemisInputAdress'
     },
-    "artemisInputPort": {
+    "workerArtemisInputPort": {
         "doc": 'Port of artemis server.',
         "format": 'port',
         "default": 5672,
         "env": 'WORKER_ARTEMIS_INPUT_PORT',
         "arg": 'workerArtemisInputPort'
     },
-    "artemisInputQueue": {
+    "workerArtemisInputQueue": {
         "doc": 'Artemis queue.',
         "format": '*',
         "default" : "queue.node::q1",
         "env": 'WORKER_ARTEMIS_INPUT_QUEUE',
         "arg": 'workerArtemisInputQueue'
     },
-    "artemisInputUser": {
+    "workerArtemisInputUser": {
         "doc": 'User login on artemis.',
         "format": 'String',
         "default" : "",
         "env": 'WORKER_ARTEMIS_INPUT_LOGIN',
         "arg": 'workerArtemisInputLogin'
     },
-    "artemisInputPassword": {
+    "workerArtemisInputPassword": {
         "doc": 'User password on artemis.',
         "format": 'String',
         "default" : "",
@@ -97,363 +99,328 @@ var config = convict({
 
 
     //output 1
-    "outputEnabled1": {
-        "doc": 'Is output enabled.',
-        "format": 'Boolean',
-        "default" : "false",
-        "env": 'WORKER_OUTPUT_ENABLED1',
-        "arg": 'workerOutputEnabled1'
-    },
-    "sendType1": {
+    "workerTargetSendType1": {
         "doc": 'Send type.',
-        "format": ['sync', 'async'],
-        "default" : "sync",
+        "format": ['SYNC', 'ASYNC', 'NONE'],
+        "default" : "NONE",
         "env": 'WORKER_SEND_TYPE1',
-        "arg": 'workerSendType1'
+        "arg": 'workerTargetSendType1'
     },
-    "restTargetAddress1": {
+    "workerRestTargetAddress1": {
         "doc": 'Address of rest server to send message.',
         "format": '*',
         "default" : "0.0.0.0",
         "env": 'WORKER_REST_TARGET_ADRESS1',
         "arg": 'workerRestTargetAdress1'
     },
-    "restTargetPort1": {
+    "workerRestTargetPort1": {
         "doc": 'Port of rest server.',
         "format": 'port',
         "default": 80,
         "env": 'WORKER_REST_PORT1',
         "arg": 'workerRestPort1'
     },
-    "restTargetPath1": {
+    "workerRestTargetPath1": {
         "doc": 'Path of target endpoint to contact.',
         "format": '*',
         "default": "/api/event",
         "env": 'WORKER_REST_PATH1',
         "arg": 'workerRestPath1'
     },
-    "artemisAddress1": {
+    "workerArtemisTargetAddress1": {
         "doc": 'Address of artemis server.',
         "format": '*',
         "default" : "0.0.0.0",
         "env": 'WORKER_ARTEMIS_ADRESS1',
-        "arg": 'workerArtemisAdress1'
+        "arg": 'workerArtemisTargetAdress1'
     },
-    "artemisPort1": {
+    "workerArtemisTargetPort1": {
         "doc": 'Port of artemis server.',
         "format": 'port',
         "default": 5672,
         "env": 'WORKER_ARTEMIS_PORT1',
-        "arg": 'workerArtemisPort1'
+        "arg": 'workerArtemisTargetPort1'
     },
-    "artemisQueue1": {
+    "workerArtemisTargetQueue1": {
         "doc": 'Artemis queue.',
         "format": '*',
         "default" : "queue.node::q1",
         "env": 'WORKER_ARTEMIS_QUEUE1',
-        "arg": 'workerArtemisQueue1'
+        "arg": 'workerArtemisTargetQueue1'
     },
-    "artemisUser1": {
+    "workerArtemisTargetUser1": {
         "doc": 'User login on artemis.',
         "format": 'String',
         "default" : "",
         "env": 'WORKER_ARTEMIS_LOGIN1',
-        "arg": 'workerArtemisLogin1'
+        "arg": 'workerArtemisTargetLogin1'
     },
-    "artemisPassword1": {
+    "workerArtemisTargetPassword1": {
         "doc": 'User password on artemis.',
         "format": 'String',
         "default" : "",
         "env": 'WORKER_ARTEMIS_PASSWORD1',
-        "arg": 'workerArtemisPassword1'
+        "arg": 'workerArtemisTargetPassword1'
     },
 
     //output2
-    "outputEnabled2": {
-        "doc": 'Is output enabled.',
-        "format": 'Boolean',
-        "default" : "false",
-        "env": 'WORKER_OUTPUT_ENABLED2',
-        "arg": 'workerOutputEnabled2'
-    },
-    "sendType2": {
+    "workerTargetSendType2": {
         "doc": 'Send type.',
-        "format": ['sync', 'async'],
-        "default" : "sync",
+        "format": ['SYNC', 'ASYNC', 'NONE'],
+        "default" : "NONE",
         "env": 'WORKER_SEND_TYPE2',
-        "arg": 'workerSendType2'
+        "arg": 'workerTargetSendType2'
     },
-    "restTargetAddress2": {
+    "workerRestTargetAddress2": {
         "doc": 'Address of rest server to send message.',
         "format": '*',
         "default" : "0.0.0.0",
         "env": 'WORKER_REST_TARGET_ADRESS2',
         "arg": 'workerRestTargetAdress2'
     },
-    "restTargetPort2": {
+    "workerRestTargetPort2": {
         "doc": 'Port of rest server.',
         "format": 'port',
         "default": 80,
         "env": 'WORKER_REST_PORT2',
-        "arg": 'workerRestPort2'
+        "arg": 'workerRestTargetPort2'
     },
-    "restTargetPath2": {
+    "workerRestTargetPath2": {
         "doc": 'Path of target endpoint to contact.',
         "format": '*',
         "default": "/api/event",
         "env": 'WORKER_REST_PATH2',
-        "arg": 'workerRestPath2'
+        "arg": 'workerRestTargetPath2'
     },
-    "artemisAddress2": {
+    "workerArtemisTargetAddress2": {
         "doc": 'Address of artemis server.',
         "format": '*',
         "default" : "0.0.0.0",
         "env": 'WORKER_ARTEMIS_ADRESS2',
-        "arg": 'workerArtemisAdress2'
+        "arg": 'workerArtemisTargetAdress2'
     },
-    "artemisPort2": {
+    "workerArtemisTargetPort2": {
         "doc": 'Port of artemis server.',
         "format": 'port',
         "default": 5672,
         "env": 'WORKER_ARTEMIS_PORT2',
-        "arg": 'workerArtemisPort2'
+        "arg": 'workerArtemisTargetPort2'
     },
-    "artemisQueue2": {
+    "workerArtemisTargetQueue2": {
         "doc": 'Artemis queue.',
         "format": '*',
         "default" : "queue.node::q1",
         "env": 'WORKER_ARTEMIS_QUEUE2',
-        "arg": 'workerArtemisQueue2'
+        "arg": 'workerArtemisTargetQueue2'
     },
-    "artemisUser2": {
+    "workerArtemisTargetUser2": {
         "doc": 'User login on artemis.',
         "format": 'String',
         "default" : "",
         "env": 'WORKER_ARTEMIS_LOGIN2',
-        "arg": 'workerArtemisLogin2'
+        "arg": 'workerArtemisTargetLogin2'
     },
-    "artemisPassword2": {
+    "workerArtemisTargetPassword2": {
         "doc": 'User password on artemis.',
         "format": 'String',
         "default" : "",
         "env": 'WORKER_ARTEMIS_PASSWORD2',
-        "arg": 'workerArtemisPassword2'
+        "arg": 'workerArtemisTargetPassword2'
     },
 
     //output3
-    "outputEnabled3": {
-        "doc": 'Is output enabled.',
-        "format": 'Boolean',
-        "default" : "false",
-        "env": 'WORKER_OUTPUT_ENABLED3',
-        "arg": 'workerOutputEnabled3'
-    },
-    "sendType3": {
+    "workerTargetSendType3": {
         "doc": 'Send type.',
-        "format": ['sync', 'async'],
-        "default" : "sync",
+        "format": ['SYNC', 'ASYNC', 'NONE'],
+        "default" : "NONE",
         "env": 'WORKER_SEND_TYPE3',
-        "arg": 'workerSendType3'
+        "arg": 'workerTargetSendType3'
     },
-    "restTargetAddress3": {
+    "workerRestTargetAddress3": {
         "doc": 'Address of rest server to send message.',
         "format": '*',
         "default" : "0.0.0.0",
         "env": 'WORKER_REST_TARGET_ADRESS3',
         "arg": 'workerRestTargetAdress3'
     },
-    "restTargetPort3": {
+    "workerRestTargetPort3": {
         "doc": 'Port of rest server.',
         "format": 'port',
         "default": 80,
         "env": 'WORKER_REST_PORT3',
-        "arg": 'workerRestPort3'
+        "arg": 'workerRestTargetPort3'
     },
-    "restTargetPath3": {
+    "workerRestTargetPath3": {
         "doc": 'Path of target endpoint to contact.',
         "format": '*',
         "default": "/api/event",
         "env": 'WORKER_REST_PATH3',
-        "arg": 'workerRestPath3'
+        "arg": 'workerRestTargetPath3'
     },
-    "artemisAddress3": {
+    "workerArtemisTargetAddress3": {
         "doc": 'Address of artemis server.',
         "format": '*',
         "default" : "0.0.0.0",
         "env": 'WORKER_ARTEMIS_ADRESS3',
-        "arg": 'workerArtemisAdress3'
+        "arg": 'workerArtemisTargetAdress3'
     },
-    "artemisPort3": {
+    "workerArtemisTargetPort3": {
         "doc": 'Port of artemis server.',
         "format": 'port',
         "default": 5673,
         "env": 'WORKER_ARTEMIS_PORT3',
-        "arg": 'workerArtemisPort3'
+        "arg": 'workerArtemisTargetPort3'
     },
-    "artemisQueue3": {
+    "workerArtemisTargetQueue3": {
         "doc": 'Artemis queue.',
         "format": '*',
         "default" : "queue.node::q1",
         "env": 'WORKER_ARTEMIS_QUEUE3',
-        "arg": 'workerArtemisQueue3'
+        "arg": 'workerArtemisTargetQueue3'
     },
-    "artemisUser3": {
+    "workerArtemisTargetUser3": {
         "doc": 'User login on artemis.',
         "format": 'String',
         "default" : "",
         "env": 'WORKER_ARTEMIS_LOGIN3',
-        "arg": 'workerArtemisLogin3'
+        "arg": 'workerArtemisTargetLogin3'
     },
-    "artemisPassword3": {
+    "workerArtemisTargetPassword3": {
         "doc": 'User password on artemis.',
         "format": 'String',
         "default" : "",
         "env": 'WORKER_ARTEMIS_PASSWORD3',
-        "arg": 'workerArtemisPassword3'
+        "arg": 'workerArtemisTargetPassword3'
     },
 
     //output4
-    "outputEnabled4": {
-        "doc": 'Is output enabled.',
-        "format": 'Boolean',
-        "default" : "false",
-        "env": 'WORKER_OUTPUT_ENABLED4',
-        "arg": 'workerOutputEnabled4'
-    },
-    "sendType4": {
+    "workerTargetSendType4": {
         "doc": 'Send type.',
-        "format": ['sync', 'async'],
-        "default" : "sync",
+        "format": ['SYNC', 'ASYNC', 'NONE'],
+        "default" : "NONE",
         "env": 'WORKER_SEND_TYPE4',
-        "arg": 'workerSendType4'
+        "arg": 'workerTargetSendType4'
     },
-    "restTargetAddress4": {
+    "workerRestTargetAddress4": {
         "doc": 'Address of rest server to send message.',
         "format": '*',
         "default" : "0.0.0.0",
         "env": 'WORKER_REST_TARGET_ADRESS4',
         "arg": 'workerRestTargetAdress4'
     },
-    "restTargetPort4": {
+    "workerRestTargetPort4": {
         "doc": 'Port of rest server.',
         "format": 'port',
         "default": 80,
         "env": 'WORKER_REST_PORT4',
-        "arg": 'workerRestPort4'
+        "arg": 'workerRestTargetPort4'
     },
-    "restTargetPath4": {
+    "workerRestTargetPath4": {
         "doc": 'Path of target endpoint to contact.',
         "format": '*',
         "default": "/api/event",
         "env": 'WORKER_REST_PATH4',
-        "arg": 'workerRestPath4'
+        "arg": 'workerRestTargetPath4'
     },
-    "artemisAddress4": {
+    "workerArtemisTargetAddress4": {
         "doc": 'Address of artemis server.',
         "format": '*',
         "default" : "0.0.0.0",
         "env": 'WORKER_ARTEMIS_ADRESS4',
-        "arg": 'workerArtemisAdress4'
+        "arg": 'workerArtemisTargetAdress4'
     },
-    "artemisPort4": {
+    "workerArtemisTargetPort4": {
         "doc": 'Port of artemis server.',
         "format": 'port',
         "default": 5674,
         "env": 'WORKER_ARTEMIS_PORT4',
-        "arg": 'workerArtemisPort4'
+        "arg": 'workerArtemisTargetPort4'
     },
-    "artemisQueue4": {
+    "workerArtemisTargetQueue4": {
         "doc": 'Artemis queue.',
         "format": '*',
         "default" : "queue.node::q1",
         "env": 'WORKER_ARTEMIS_QUEUE4',
-        "arg": 'workerArtemisQueue4'
+        "arg": 'workerArtemisTargetQueue4'
     },
-    "artemisUser4": {
+    "workerArtemisTargetUser4": {
         "doc": 'User login on artemis.',
         "format": 'String',
         "default" : "",
         "env": 'WORKER_ARTEMIS_LOGIN4',
-        "arg": 'workerArtemisLogin4'
+        "arg": 'workerArtemisTargetLogin4'
     },
-    "artemisPassword4": {
+    "workerArtemisTargetPassword4": {
         "doc": 'User password on artemis.',
         "format": 'String',
         "default" : "",
         "env": 'WORKER_ARTEMIS_PASSWORD4',
-        "arg": 'workerArtemisPassword4'
+        "arg": 'workerArtemisTargetPassword4'
     },
 
     //output5
-    "outputEnabled5": {
-        "doc": 'Is output enabled.',
-        "format": 'Boolean',
-        "default" : "false",
-        "env": 'WORKER_OUTPUT_ENABLED5',
-        "arg": 'workerOutputEnabled5'
-    },
-    "sendType5": {
+    "workerTargetSendType5": {
         "doc": 'Send type.',
-        "format": ['sync', 'async'],
-        "default" : "sync",
+        "format": ['SYNC', 'ASYNC', 'NONE'],
+        "default" : "NONE",
         "env": 'WORKER_SEND_TYPE5',
-        "arg": 'workerSendType5'
+        "arg": 'workerTargetSendType5'
     },
-    "restTargetAddress5": {
+    "workerRestTargetAddress5": {
         "doc": 'Address of rest server to send message.',
         "format": '*',
         "default" : "0.0.0.0",
         "env": 'WORKER_REST_TARGET_ADRESS5',
         "arg": 'workerRestTargetAdress5'
     },
-    "restTargetPort5": {
+    "workerRestTargetPort5": {
         "doc": 'Port of rest server.',
         "format": 'port',
         "default": 80,
         "env": 'WORKER_REST_PORT5',
-        "arg": 'workerRestPort5'
+        "arg": 'workerRestTargetPort5'
     },
-    "restTargetPath5": {
+    "workerRestTargetPath5": {
         "doc": 'Path of target endpoint to contact.',
         "format": '*',
         "default": "/api/event",
         "env": 'WORKER_REST_PATH5',
-        "arg": 'workerRestPath5'
+        "arg": 'workerRestTargetPath5'
     },
-    "artemisAddress5": {
+    "workerArtemisTargetAddress5": {
         "doc": 'Address of artemis server.',
         "format": '*',
         "default" : "0.0.0.0",
         "env": 'WORKER_ARTEMIS_ADRESS5',
-        "arg": 'workerArtemisAdress5'
+        "arg": 'workerArtemisTargetAdress5'
     },
-    "artemisPort5": {
+    "workerArtemisTargetPort5": {
         "doc": 'Port of artemis server.',
         "format": 'port',
         "default": 5675,
         "env": 'WORKER_ARTEMIS_PORT5',
-        "arg": 'workerArtemisPort5'
+        "arg": 'workerArtemisTargetPort5'
     },
-    "artemisQueue5": {
+    "workerArtemisTargetQueue5": {
         "doc": 'Artemis queue.',
         "format": '*',
         "default" : "queue.node::q1",
         "env": 'WORKER_ARTEMIS_QUEUE5',
-        "arg": 'workerArtemisQueue5'
+        "arg": 'workerArtemisTargetQueue5'
     },
-    "artemisUser5": {
+    "workerArtemisTargetUser5": {
         "doc": 'User login on artemis.',
         "format": 'String',
         "default" : "",
         "env": 'WORKER_ARTEMIS_LOGIN5',
-        "arg": 'workerArtemisLogin5'
+        "arg": 'workerArtemisTargetLogin5'
     },
-    "artemisPassword5": {
+    "workerArtemisTargetPassword5": {
         "doc": 'User password on artemis.',
         "format": 'String',
         "default" : "",
         "env": 'WORKER_ARTEMIS_PASSWORD5',
-        "arg": 'workerArtemisPassword5'
+        "arg": 'workerArtemisTargetPassword5'
     }
 
 
@@ -464,7 +431,7 @@ var config = convict({
 //let installDir = path.dirname(".")
 //console.log(installDir)
 //var env = config.get(__dirname + '/config.json')
-config.loadFile('./config.json');
+//config.loadFile('./config.json');
 
 // Perform validation
 config.validate({allowed: 'strict'});

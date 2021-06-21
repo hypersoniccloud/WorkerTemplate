@@ -28,7 +28,7 @@ async function main() {
 
     //start senders
     for (let i=1; i<6; i++) {
-        if (config.get(`outputEnabled${i}`)) {
+        if (config.get(`workerTargetSendType${i}`) !== "NONE") {
             sender.startSender(i)
         }
     }

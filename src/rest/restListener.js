@@ -15,15 +15,15 @@ startExpressForData = ()  => {
     app.use(bodyParser.json())
     
     //add message middleware
-    app.put(config.get("restInputPath"), (req, res) => {
+    app.put(config.get("workerRestInputPath"), (req, res) => {
         debug('Event')
         debug(req.body)
         manageEvent(req.body)
         res.status(200).send("Message : ok")
     })
 
-    app.listen(config.get("restInputPort"), config.get("restInputAddress"), () => {
-        debug(`OutputFileEndpoint listening at http://localhost:${config.get("restInputPort")}`)
+    app.listen(config.get("workerRestInputPort"), config.get("workerRestInputAddress"), () => {
+        debug(`OutputFileEndpoint listening at http://${config.get("workerRestInputAddress")}:${config.get("workerRestInputPort")}`)
     })
 }
 

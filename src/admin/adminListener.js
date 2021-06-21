@@ -13,20 +13,20 @@ startExpressForAdmin = ()  => {
     app.use(bodyParser.json())
     
     //add middleware
-    app.put(`${config.get("restAdminPath")}/start`, (req, res) => {
+    app.put(`/api/admin/start`, (req, res) => {
         debug('start')
         listener.startListener()
         res.status(200).send("Message : ok")
     })
 
-    app.put(`${config.get("restAdminPath")}/stop`, (req, res) => {
+    app.put(`/api/admin/stop`, (req, res) => {
         debug('stop')
         listener.stopListener()
         res.status(200).send("Message : ok")
     })
 
-    app.listen(config.get("restAdminPort"), config.get("restAdminAddress"), () => {
-        debug(`worker listening at http://${config.get("restAdminAddress")}:${config.get("restAdminPort")}/${config.get("restAdminPath")}`)
+    app.listen(config.get("workerRestInputPort"), config.get("workerRestInputAddress"), () => {
+        debug(`worker listening at http://${config.get("workerRestInputAddress")}:${config.get("workerRestInputPort")}/api/admin}`)
     })
 }
 

@@ -4,16 +4,16 @@ const restSender = require('../rest/restSender')
 const config = require('../config')
 
 function sendEvent(senderNumber, event) {
-    if (config.get(`sendType${senderNumber}`) === 'sync') {
+    if (config.get(`workerTargetSendType${senderNumber}`) === 'SYNC') {
         restSender.sendEvent(senderNumber, event)
     }
-    else {
+    else if (config.get(`workerTargetSendType${senderNumber}`) === 'ASYNC') {
         artemisSender.sendEvent(senderNumber, event)
     }
 }
 
 function startSender(senderNumber) {
-    if (config.get(`sendType${senderNumber}`) === 'async') {
+    if (config.get(`workerTargetSendType${senderNumber}`) === 'ASYNC') {
         artemisSender.startSender(senderNumber)
     }
 }

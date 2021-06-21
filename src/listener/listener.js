@@ -4,7 +4,7 @@ const restListener = require('../rest/restListener')
 const config = require('../config')
 
 function startListener() {
-    if (config.get('receiveType') === 'sync') {
+    if (config.get('workerReceiveType') === 'SYNC') {
         restListener.startListener()
     }
     else {
@@ -13,7 +13,7 @@ function startListener() {
 }
 
 function stopListener() {
-    if (config.get('receiveType') === 'sync') {
+    if (config.get('workerReceiveType') === 'SYNC') {
         console.log('Could not stop rest listener !')
         debug('Error could not stop rest listener !')
     }
