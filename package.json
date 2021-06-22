@@ -10,7 +10,8 @@
     "build": "rm -rf dist && webpack --mode development && cp ./src/config.json ./dist",
     "startProd": "node ./dist/InputFileEndopoint",
     "push": "npm --registry https://sginer2.bytesafe.dev/r/integration publish '.'",
-    "buildExec": "rm -rf dist && webpack --mode production && cp ./src/config.json ./dist && pkg --target linux ."
+    "comment" : "https://github.com/vercel/pkg#bytecode-reproducibility for --no-bytecode on line bellow",
+    "buildExec": "rm -rf dist && webpack --mode production && cp ./src/config.json ./dist && pkg --no-bytecode --target linux ."
   },
   "repository": {
     "type": "git",
