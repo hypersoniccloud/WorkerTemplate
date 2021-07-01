@@ -65,7 +65,7 @@ var config = convict({
         "format": '*',
         "default" : "0.0.0.0",
         "env": 'WORKER_ARTEMIS_INPUT_ADRESS',
-        "arg": 'workerArtemisInputAdress'
+        "arg": 'workerArtemisInputAddress'
     },
     "workerArtemisInputPort": {
         "doc": 'Port of artemis server.',
@@ -111,7 +111,7 @@ var config = convict({
         "format": '*',
         "default" : "0.0.0.0",
         "env": 'WORKER_REST_TARGET_ADRESS1',
-        "arg": 'workerRestTargetAdress1'
+        "arg": 'workerRestTargetAddress1'
     },
     "workerRestTargetPort1": {
         "doc": 'Port of rest server.',
@@ -132,7 +132,7 @@ var config = convict({
         "format": '*',
         "default" : "0.0.0.0",
         "env": 'WORKER_ARTEMIS_ADRESS1',
-        "arg": 'workerArtemisTargetAdress1'
+        "arg": 'workerArtemisTargetAddress1'
     },
     "workerArtemisTargetPort1": {
         "doc": 'Port of artemis server.',
@@ -176,7 +176,7 @@ var config = convict({
         "format": '*',
         "default" : "0.0.0.0",
         "env": 'WORKER_REST_TARGET_ADRESS2',
-        "arg": 'workerRestTargetAdress2'
+        "arg": 'workerRestTargetAddress2'
     },
     "workerRestTargetPort2": {
         "doc": 'Port of rest server.',
@@ -197,7 +197,7 @@ var config = convict({
         "format": '*',
         "default" : "0.0.0.0",
         "env": 'WORKER_ARTEMIS_ADRESS2',
-        "arg": 'workerArtemisTargetAdress2'
+        "arg": 'workerArtemisTargetAddress2'
     },
     "workerArtemisTargetPort2": {
         "doc": 'Port of artemis server.',
@@ -241,7 +241,7 @@ var config = convict({
         "format": '*',
         "default" : "0.0.0.0",
         "env": 'WORKER_REST_TARGET_ADRESS3',
-        "arg": 'workerRestTargetAdress3'
+        "arg": 'workerRestTargetAddress3'
     },
     "workerRestTargetPort3": {
         "doc": 'Port of rest server.',
@@ -262,7 +262,7 @@ var config = convict({
         "format": '*',
         "default" : "0.0.0.0",
         "env": 'WORKER_ARTEMIS_ADRESS3',
-        "arg": 'workerArtemisTargetAdress3'
+        "arg": 'workerArtemisTargetAddress3'
     },
     "workerArtemisTargetPort3": {
         "doc": 'Port of artemis server.',
@@ -306,7 +306,7 @@ var config = convict({
         "format": '*',
         "default" : "0.0.0.0",
         "env": 'WORKER_REST_TARGET_ADRESS4',
-        "arg": 'workerRestTargetAdress4'
+        "arg": 'workerRestTargetAddress4'
     },
     "workerRestTargetPort4": {
         "doc": 'Port of rest server.',
@@ -327,7 +327,7 @@ var config = convict({
         "format": '*',
         "default" : "0.0.0.0",
         "env": 'WORKER_ARTEMIS_ADRESS4',
-        "arg": 'workerArtemisTargetAdress4'
+        "arg": 'workerArtemisTargetAddress4'
     },
     "workerArtemisTargetPort4": {
         "doc": 'Port of artemis server.',
@@ -371,7 +371,7 @@ var config = convict({
         "format": '*',
         "default" : "0.0.0.0",
         "env": 'WORKER_REST_TARGET_ADRESS5',
-        "arg": 'workerRestTargetAdress5'
+        "arg": 'workerRestTargetAddress5'
     },
     "workerRestTargetPort5": {
         "doc": 'Port of rest server.',
@@ -392,7 +392,7 @@ var config = convict({
         "format": '*',
         "default" : "0.0.0.0",
         "env": 'WORKER_ARTEMIS_ADRESS5',
-        "arg": 'workerArtemisTargetAdress5'
+        "arg": 'workerArtemisTargetAddress5'
     },
     "workerArtemisTargetPort5": {
         "doc": 'Port of artemis server.',

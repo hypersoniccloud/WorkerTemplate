@@ -12,7 +12,29 @@
                 "<node_internals>/**"
             ],
             "program": "${workspaceFolder}/src/main.js",
-            "env":{"DEBUG" : "*"}
+            "env":{"DEBUG" : "*"},
+            "args" : [
+                "--workerRestInputPath", "/api/event",
+                "--workerReceiveType", "ASYNC",
+                "--workerArtemisInputAddress", "192.168.1.100",
+                "--workerArtemisInputPort", "7267",
+                "--workerArtemisInputQueue", "hc.inputFile::out-0",
+                "--workerArtemisInputLogin", "hypersoniccloud",
+                "--workerArtemisInputPassword","hypersoniccloud",
+                "--workerTargetSendType1", "ASYNC",
+                "--workerArtemisTargetAddress1", "192.168.1.100",
+                "--workerArtemisTargetPort1", "7267",
+                "--workerArtemisTargetQueue1", "hc.outputFile",
+                "--workerArtemisTargetLogin1", "hypersoniccloud",
+                "--workerArtemisTargetPassword1", "hypersoniccloud",
+                "--workerTargetSendType2", "SYNC",
+                "--workerRestTargetAddress2", "192.168.1.29",
+                "--workerRestTargetPort2", "7267",
+                "--workerRestTargetMutualExclusion2", "false",
+                "--workerTargetSendType3", "NONE",
+                "--workerTargetSendType4", "NONE",
+                "--workerTargetSendType5", "NONE"
+            ]
         }
     ]
 }

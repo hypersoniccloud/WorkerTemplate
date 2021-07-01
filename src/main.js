@@ -10,7 +10,7 @@ async function main() {
     //first time, service is initialized from env values
     //after, service is initialized from file properties on disk
     // debug(`Delay : ${config.get("delay")}`)
-    // debug(`Directory : ${config.get("directory")}`)
+    console.log(`workerArtemisInputAddress : ${config.get("workerArtemisInputAddress")}`)
     // debug(`Max messages : ${config.get("maxMessage")}`)
     // debug(`Artemis address : ${config.get("artemisAddress")}`)
     // debug(`Artemis port : ${config.get("artemisPort")}`)
@@ -28,15 +28,20 @@ async function main() {
 
     //start senders
     for (let i=1; i<6; i++) {
+        console.log(`i=${i}`)
         if (config.get(`workerTargetSendType${i}`) !== "NONE") {
             sender.startSender(i)
         }
     }
 
+    console.log("ici")
     listener.startListener()
+    console.log("là")
 
     //start express for api
-    adminListener.startListener()
+    //adminListener.startListener()
+    console.log("fin")
+
 }
 
 

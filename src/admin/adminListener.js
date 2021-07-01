@@ -9,6 +9,7 @@ const config  = require('../config')
 
 startExpressForAdmin = ()  => {
 
+    console.log("on est ici")
     // parse application/json
     app.use(bodyParser.json())
     
