@@ -10,7 +10,7 @@
     "build": "rm -rf dist && webpack --mode development && cp ./src/config.json ./dist",
     "startProd": "node ./dist/InputFileEndopoint",
     "push": "npm --registry https://sginer2.bytesafe.dev/r/integration publish '.'",
-    "comment" : "https://github.com/vercel/pkg#bytecode-reproducibility for --no-bytecode on line bellow",
+    "comment": "https://github.com/vercel/pkg#bytecode-reproducibility for --no-bytecode on line bellow",
     "buildExec": "rm -rf dist && webpack --mode production && cp ./src/config.json ./dist && pkg --no-bytecode --target linux ."
   },
   "repository": {
@@ -18,7 +18,8 @@
     "url": "git+https://github.com/sginer/WorkerTemplate.git"
   },
   "dependencies": {
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
+    "body-parser": "^1.5.2",
     "convict": "^6.0.0",
     "convict-format-with-validator": "^6.0.0",
     "cors": "^2.8.5",

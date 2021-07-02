@@ -39,7 +39,7 @@ async function main() {
     console.log("là")
 
     //start express for api
-    //adminListener.startListener()
+    adminListener.startListener()
     console.log("fin")
 
 }
