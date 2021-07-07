@@ -39,10 +39,6 @@ async function main() {
     listener.startListener()
     console.log("là")
 
-    //start express for api
-    adminListener.startListener()
-    console.log("fin")
-
     //start listener
     expressFactory.startListener()
 

@@ -1,16 +1,12 @@
 const debug = require('debug')('listener')
 const artemisListener = require('../artemis/artemisListener')
-const restListener = require('../rest/restListener')
 const config = require('../config')
 const constants = require('../constant')
 
 let status = null
 
 function startListener() {
-    if (config.get('workerReceiveType') === 'SYNC') {
-        restListener.startListener()
-    }
-    else {
+    if (config.get('workerReceiveType') === 'ASYNC') {
         artemisListener.startListener()
     }
     status = constants.LISTENER_STARTED

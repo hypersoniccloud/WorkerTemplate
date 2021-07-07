@@ -1,6 +1,7 @@
 const express = require('express')
 const config  = require('../config')
 const debug = require('debug')('startExpressFactory')
+const apiMiddleware = require('../api/apiMiddleware')
 
 //var bodyParser = require('body-parser')
 
@@ -9,9 +10,7 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded())
 
-const getExpressApp = () => {
-    return app
-}
+app.use(apiMiddleware)
 
 const startListener = () => {
     app.listen(config.get("workerRestInputPort"), config.get("workerRestInputAddress"), () => {
@@ -20,7 +19,6 @@ const startListener = () => {
 }
 
 const expressFactory = {
-    getExpressApp,
     startListener
 }
 
