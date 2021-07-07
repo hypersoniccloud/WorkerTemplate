@@ -3,6 +3,7 @@ const listener = require('./listener/listener')
 const sender = require('./sender/sender')
 const adminListener = require('./admin/adminListener')
 const config = require('./config')
+const expressFactory = require('./express/expressFactory')
 
 async function main() {
 
@@ -41,6 +42,9 @@ async function main() {
     //start express for api
     adminListener.startListener()
     console.log("fin")
+
+    //start listener
+    expressFactory.startListener()
 
 }
 

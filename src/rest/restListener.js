@@ -1,18 +1,12 @@
-const express = require('express')
-var bodyParser = require('body-parser')
-
-const app = express()
-const cors = require('cors')
-const path = require('path')
+const expressFactory = require('../express/expressFactory')
 
 const manageEvent = require('../event/eventHandler')
 const config  = require('../config')
 const debug = require('debug')('startExpressForData')
 
 startExpressForData = ()  => {
+    const app = expressFactory.getExpressApp()
 
-    // parse application/json
-    app.use(bodyParser.json())
     
     //add message middleware
     app.put(config.get("workerRestInputPath"), (req, res) => {
@@ -22,9 +16,6 @@ startExpressForData = ()  => {
         res.status(200).send("Message : ok")
     })
 
-    app.listen(config.get("workerRestInputPort"), config.get("workerRestInputAddress"), () => {
-        debug(`OutputFileEndpoint listening at http://${config.get("workerRestInputAddress")}:${config.get("workerRestInputPort")}`)
-    })
 }
 
 const restListener = {
