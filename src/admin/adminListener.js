@@ -1,4 +1,5 @@
 const express = require('express')
+const constants = require('../constant')
 const listener = require('../listener/listener')
 const debug = require('debug')('adminListener')
 const configManager = require('./configManager')
@@ -27,7 +28,10 @@ admin.get('/config', (req, res) =>{
 admin.get('/status', (req, res) =>{
     debug('get status')
     const status = {
-        "status" : listener.getListenerStatus()
+            "listener" : {
+                "event" : listener.getListenerStatus(),
+                "admin" : constants.LISTENER_STARTED
+            }
     }
     res.status(200).send(JSON.stringify(status))
 })
