@@ -118,7 +118,7 @@ var config = convict({
         "format": 'port',
         "default": 80,
         "env": 'WORKER_REST_PORT1',
-        "arg": 'workerRestPort1'
+        "arg": 'workerRestTargetPort1'
     },
     "workerRestTargetPath1": {
         "doc": 'Path of target endpoint to contact.',

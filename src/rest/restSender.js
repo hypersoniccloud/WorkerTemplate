@@ -6,7 +6,7 @@ async function syncSend(senderNumber, event) {
     let url = `http://${config.get(`workerRestTargetAddress${senderNumber}`)}:${config.get(`workerRestTargetPort${senderNumber}`)}${config.get(`workerRestTargetPath${senderNumber}`)}`;
     try {
         let result = await axios({
-            "method" : "post",
+            "method" : "put",
             "url": url,
             "data": event
         })
