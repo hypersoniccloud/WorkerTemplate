@@ -12,6 +12,8 @@ async function main() {
     //after, service is initialized from file properties on disk
     // debug(`Delay : ${config.get("delay")}`)
     console.log(`workerArtemisInputAddress : ${config.get("workerArtemisInputAddress")}`)
+    console.log(`workerArtemisTargetAddress1 : ${config.get("workerArtemisTargetAddress1")}`)
+    console.log(`workerRestTargetAddress2 : ${config.get("workerRestTargetAddress2")}`)
     // debug(`Max messages : ${config.get("maxMessage")}`)
     // debug(`Artemis address : ${config.get("artemisAddress")}`)
     // debug(`Artemis port : ${config.get("artemisPort")}`)

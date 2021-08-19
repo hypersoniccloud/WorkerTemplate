@@ -7,16 +7,22 @@ const configManager = require('./configManager')
 const admin = express()
 
 //add middleware
-admin.put(`/start`, (req, res) => {
-    debug('start')
+admin.put(`/play`, (req, res) => {
+    debug('play')
     listener.startListener()
+    res.status(200).send("Message : ok")
+})
+
+admin.put(`/pause`, (req, res) => {
+    debug('pause')
+    listener.stopListener()
     res.status(200).send("Message : ok")
 })
 
 admin.put(`/stop`, (req, res) => {
     debug('stop')
-    listener.stopListener()
     res.status(200).send("Message : ok")
+    process.exit(0)
 })
 
 admin.get('/config', (req, res) =>{
