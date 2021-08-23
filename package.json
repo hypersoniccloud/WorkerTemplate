@@ -12,8 +12,8 @@
     "push": "npm --registry https://sginer2.bytesafe.dev/r/integration publish '.'",
     "comment": "https://github.com/vercel/pkg#bytecode-reproducibility for --no-bytecode on line bellow",
     "buildExec": "rm -rf dist && webpack --mode production && cp ./src/config.json ./dist && pkg --no-bytecode --target linux .",
-    "buildExecArm": "rm -rf dist && webpack --mode production && cp ./src/config.json ./dist && pkg --no-bytecode --target linux-arm64 .",
-    "buildExecX64": "rm -rf dist && webpack --mode production && cp ./src/config.json ./dist && pkg --no-bytecode --target linux-x64 ."
+    "buildExecArm": "rm -rf dist && webpack --mode production && pkg -o workertemplatearm --no-bytecode --target linux-arm64 .",
+    "buildExecX64": "rm -rf dist && webpack --mode production && pkg -o workertemplatex64 --no-bytecode --target linux-x64 ."
   },
   "repository": {
     "type": "git",
@@ -33,9 +33,9 @@
     "uuid": "^8.3.0"
   },
   "devDependencies": {
-    "pkg": "^4.4.9",
     "cross-env": "^7.0.2",
     "nodemon": "^2.0.4",
+    "pkg": "^4.5.1",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-node-externals": "^2.5.2"
