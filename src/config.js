@@ -30,6 +30,35 @@ var config = convict({
     },
     */
 
+    "mongoUrl": {
+        "doc": "Mongo url",
+        "format": "*",
+        "default": 'mongodb://localhost:27017',
+        "env": 'MONGO_URL',
+        "arg": 'mongoUrl'
+    },
+    "mongoDatabase": {
+        "doc": "Mongo database",
+        "format": "*",
+        "default": 'hypersonic',
+        "env": 'MONGO_DATABASE',
+        "arg": 'mongoDatabase'
+    },
+    "mongoLogin": {
+        "doc": "Mongo login",
+        "format": "*",
+        "default": 'admin',
+        "env": 'MONGO_LOGIN',
+        "arg": 'mongoLogin'
+    },
+    "mongoPassword": {
+        "doc": "Mongo password",
+        "format": "*",
+        "default": 'admin',
+        "env": 'MONGO_PASSWORD',
+        "arg": 'mongoPassword'
+    },
+
 
     //receive configuration
     "workerReceiveType": {
