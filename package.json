@@ -28,15 +28,16 @@
     "debug": "^4.1.1",
     "express": "^4.17.1",
     "hl7parser": "^1.0.1",
+    "mongoose": "^6.6.1",
     "path": "^0.12.7",
     "rhea": "^1.0.23",
     "uuid": "^8.3.0"
   },
   "devDependencies": {
-    "cross-env": "^7.0.2",
+    "cross-env": "^7.0.3",
     "nodemon": "^2.0.4",
     "pkg": "^4.5.1",
-    "webpack": "^5.74.0",
+    "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-node-externals": "^2.5.2"
   },
