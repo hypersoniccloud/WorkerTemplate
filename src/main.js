@@ -1,11 +1,13 @@
-const debug = require('debug')('main')
-const listener = require('./listener/listener')
-const sender = require('./sender/sender')
-const adminListener = require('./admin/adminListener')
-const config = require('./config')
-const expressFactory = require('./express/expressFactory')
+const debug = require('debug')('main');
+const listener = require('./listener/listener');
+const sender = require('./sender/sender');
+const config = require('./config');
+const expressFactory = require('./express/expressFactory');
+const mongooseManager = require('./mongo/mongooseManager');
 
 async function main() {
+    //init mongodb connection
+    mongooseManager.getConnection();
 
     //read parameters on file and init service
     //first time, service is initialized from env values
