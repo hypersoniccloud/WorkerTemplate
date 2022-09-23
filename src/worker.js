@@ -11,11 +11,11 @@ function manageEvent(event, context, callback) {
   //console.log(message.toString())
   //console.log(message.get("PID.5.1").toString())
  
-  data = (Buffer.from((event['filecontent']),'base64').toString('utf8'));
+  data = (Buffer.from((event['content']),'base64').toString('utf8'));
   hl7Obj = (hl7parser.create(data.replace(/(?:\\[rn]|[\r\n]+)+/g, "\r").trim()));
   firstname = (hl7Obj.get('PID.5.1').toString());
-  sender.sendEvent(1,  ({"filename" : `${event['filename']}`,"filecontent" : (Buffer.from(([firstname,' - ',firstname].join(''))).toString('base64'))}))
-  sender.sendEvent(2,  ({"filename" : `${firstname}`,"filecontent" : (Buffer.from(('Hello ' + String(firstname))).toString('base64'))}))
+  sender.sendEvent(1, event, {"eventTypeInfo" : {"filename" : `${event.eventTypeInfo.filename}`},"content" : (Buffer.from(([firstname,' - ',firstname].join(''))).toString('base64'))})
+  sender.sendEvent(2, event,  {"eventTypeInfo" : {"filename" : `${event.eventTypeInfo.filename}`},"content" : (Buffer.from(('Hello ' + String(firstname))).toString('base64'))})
    
     
  }

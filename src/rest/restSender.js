@@ -1,6 +1,7 @@
-const config  = require('../config')
-const axios = require('axios')
-const debug = require('debug')('restSender')
+const config  = require('../config');
+const axios = require('axios');
+const debug = require('debug')('restSender');
+const {MessageManager} = require('../messageManager');
 
 async function syncSend(senderNumber, event) {
     let url = `http://${config.get(`workerRestTargetAddress${senderNumber}`)}:${config.get(`workerRestTargetPort${senderNumber}`)}${config.get(`workerRestTargetPath${senderNumber}`)}`;
@@ -10,13 +11,15 @@ async function syncSend(senderNumber, event) {
             "url": url,
             "data": event
         })
-        debug(result)
-        debug(event)
-        debug("message send ok")
+        debug(result);
+        debug(event);
+        debug("message send ok");
+        return MessageManager.createSuccessMessage();
     }
     catch (error) {
-        debug(error)
-        debug("message send error")
+        debug(error);
+        debug("message send error");
+        return MessageManager.createErrorMessage(500, error);
     }
 }
 

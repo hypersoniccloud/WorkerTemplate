@@ -1,12 +1,13 @@
 
 const container = require('rhea');
-const config  = require('../config')
-const debug = require('debug')('artemisSender')
+const config  = require('../config');
+const debug = require('debug')('artemisSender');
+const {MessageManager} = require('../messageManager');
 
 
-let connectionArray = [0,1,2,3,4,5].map(id => null)
-let sendable = [0,1,2,3,4,5].map(id => false)
-let contextHolder = [0,1,2,3,4,5].map(id => null)
+let connectionArray = [0,1,2,3,4,5].map(id => null);
+let sendable = [0,1,2,3,4,5].map(id => false);
+let contextHolder = [0,1,2,3,4,5].map(id => null);
 
 function startSender(senderNumber) {
     if (connectionArray[senderNumber] === undefined || connectionArray[senderNumber] === null){
@@ -29,14 +30,14 @@ function startSender(senderNumber) {
 
 function sendEvent(senderNumber, event) {
     if (contextHolder[senderNumber] !== null && contextHolder[senderNumber].sender.sendable()) {
-        debug(`Send event for sender ${senderNumber}`)
-        contextHolder[senderNumber].sender.send({"body":event})
+        debug(`Send event for sender ${senderNumber}`);
+        contextHolder[senderNumber].sender.send({"body":event});
     }
     else {
-        debug(`Send event for ${senderNumber} in 1s`)
-        setTimeout(() => sendEvent(senderNumber, event), 1000)
+        debug(`Send event for ${senderNumber} in 1s`);
+        setTimeout(() => sendEvent(senderNumber, event), 1000);
     }
-
+    return MessageManager.createSuccessMessage();    
 }
 
 const artemisSenders = {

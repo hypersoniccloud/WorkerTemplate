@@ -1,5 +1,6 @@
-var convict = require('convict');
-var path = require('path')
+const convict = require('convict');
+const path = require('path')
+const { v4: uuidv4 } = require('uuid');
 
 convict.addFormat(require('convict-format-with-validator').ipaddress);
 
@@ -30,6 +31,49 @@ var config = convict({
     },
     */
 
+    "mongoUrl": {
+        "doc": "Mongo url",
+        "format": "*",
+        "default": 'mongodb://localhost:27017',
+        "env": 'MONGO_URL',
+        "arg": 'mongoUrl'
+    },
+    "mongoDatabase": {
+        "doc": "Mongo database",
+        "format": "*",
+        "default": 'hypersonic',
+        "env": 'MONGO_DATABASE',
+        "arg": 'mongoDatabase'
+    },
+    "mongoLogin": {
+        "doc": "Mongo login",
+        "format": "*",
+        "default": 'admin',
+        "env": 'MONGO_LOGIN',
+        "arg": 'mongoLogin'
+    },
+    "mongoPassword": {
+        "doc": "Mongo password",
+        "format": "*",
+        "default": 'admin',
+        "env": 'MONGO_PASSWORD',
+        "arg": 'mongoPassword'
+    },
+
+    "idComponent": {
+        "doc": "Flow id component",
+        "format": "*",
+        "default": uuidv4(),
+        "env": 'ID_COMPONENT',
+        "arg": 'idComponent'
+    },
+    "subidComponent": {
+        "doc": "Flow subid component",
+        "format": "Number",
+        "default": 1,
+        "env": 'SUBID_COMPONENT',
+        "arg": 'subidComponent'
+    },
 
     //receive configuration
     "workerReceiveType": {
