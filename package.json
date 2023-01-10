@@ -22,7 +22,7 @@
   "dependencies": {
     "axios": "^0.21.2",
     "body-parser": "^1.5.2",
-    "convict": "^6.2.3",
+    "convict": "^6.2.4",
     "convict-format-with-validator": "^6.0.0",
     "cors": "^2.8.5",
     "debug": "^4.1.1",
